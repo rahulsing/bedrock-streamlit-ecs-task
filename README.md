@@ -19,7 +19,7 @@ CLUSTER_NAME="MyECSCluster"
 cd Project
 
 
-aws ecr create-repository --repository-name $ECR_REPOSITORY_NAME --region us-west-2
+aws ecr create-repository --repository-name $ECR_REPOSITORY_NAME --region $AWS_REGION
 ```
 
 ##  Step 3: Build and push the image to ECR
@@ -68,6 +68,10 @@ aws cloudformation create-stack \
 ## Step 5: Run ECS task : 
 ##### From above CloudFromation output set the below value
 
+```
+aws cloudformation describe-stacks --stack-name  my-ecs-streamlit-bedrock-stack --query 'Stacks[0].Outputs[].{Key:OutputKey,Value:OutputValue}' --output json --region $AWS_REGION
+```
+
 Set variable 
 ```
 TaskDefinitionArn=arn:aws:ecs:us-west-2:12345678910:task-definition/from-cloudformation:1
@@ -103,20 +107,22 @@ TASK_ARN=$(aws ecs run-task \
 ```
 
 ```
-aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN --query 'tasks[0].lastStatus' --output text
+aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN --query 'tasks[0].lastStatus' --output text --region $AWS_REGION
+
 ```
 
 ```
 ENI_ID=$(aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN \
   --query 'tasks[0].attachments[0].details[?name==`networkInterfaceId`].value' \
-  --output text)
+  --output text
+  --region $AWS_REGION)
 ```
 
 ```
 PUBLIC_IP=$(aws ec2 describe-network-interfaces --network-interface-ids $ENI_ID \
   --query 'NetworkInterfaces[0].Association.PublicIp' \
-  --output text)
-
+  --output text
+  --region $AWS_REGION)
 ```
 
 ```
