@@ -107,22 +107,22 @@ TASK_ARN=$(aws ecs run-task \
 ```
 
 ```
-aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN --query 'tasks[0].lastStatus' --output text --region $AWS_REGION
+aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN --query 'tasks[0].lastStatus' --region $AWS_REGION --output text 
 
 ```
 
 ```
 ENI_ID=$(aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN \
   --query 'tasks[0].attachments[0].details[?name==`networkInterfaceId`].value' \
-  --output text
-  --region $AWS_REGION)
+  --region $AWS_REGION \
+  --output text)
 ```
 
 ```
 PUBLIC_IP=$(aws ec2 describe-network-interfaces --network-interface-ids $ENI_ID \
   --query 'NetworkInterfaces[0].Association.PublicIp' \
-  --output text
-  --region $AWS_REGION)
+  --region $AWS_REGION \
+  --output text)
 ```
 
 ```
