@@ -124,6 +124,7 @@ EXTERNAL_LINK="http://$PUBLIC_IP:80"
 ```
 
 ## Open the Streamlit app: 
+![steamlitapp](https://github.com/rahulsing/bedrock-streamlit-ecs-task/blob/main/StreamlitApp.PNG?raw=true)
 
 
 ## CLEAN UP 
