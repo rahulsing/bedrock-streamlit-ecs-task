@@ -16,7 +16,7 @@ CLUSTER_NAME="MyECSCluster"
 ##  Step 2: Create ECR Repo
 
 ```
-cd project
+cd Project
 
 
 aws ecr create-repository --repository-name $ECR_REPOSITORY_NAME --region us-west-2
