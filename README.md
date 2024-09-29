@@ -127,6 +127,7 @@ PUBLIC_IP=$(aws ec2 describe-network-interfaces --network-interface-ids $ENI_ID 
 
 ```
 EXTERNAL_LINK="http://$PUBLIC_IP:80"
+echo $EXTERNAL_LINK
 ```
 
 ## Open the Streamlit app: 
