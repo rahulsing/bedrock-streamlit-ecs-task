@@ -1,6 +1,42 @@
 
-## Git Clone : 
 
+## Architecture Overview
+This project demonstrates a serverless architecture using AWS services to create an interactive AI chatbot. Here are a few key points about the architecture:
+
+![steamlitapp](https://github.com/rahulsing/bedrock-streamlit-ecs-task/blob/main/StreamlitApp.PNG?raw=true)
+
+1. **Streamlit Frontend**: A user-friendly web interface built with Streamlit, allowing users to input prompts and select AI models.
+2. **Amazon Bedrock**: The backend AI service provided by AWS, which hosts various large language models.
+3. **AWS SDK (Boto3)**: Used to interact with Amazon Bedrock's API, sending requests and receiving responses.
+4. **Docker Container**: The application is containerized for easy deployment and scalability.
+5. **Amazon Elastic Container Registry (ECR)**: Used to store and manage the Docker container image.
+6. **Amazon Elastic Container Service (ECS)**: Manages and runs the containerized application, providing scalability and orchestration.
+
+The application flow is as follows:
+1. Users interact with the Streamlit interface hosted on ECS.
+2. User inputs are sent to Amazon Bedrock via Boto3.
+3. Bedrock processes the request and generates a response.
+4. The response is streamed back to the Streamlit interface in real-time.
+5. ECS manages the container.
+
+## Prerequisites
+
+Before running this project, ensure you have the following:
+
+1. **AWS Account**: You need an active AWS account with access to Amazon Bedrock.
+2. **AWS CLI**: Install and configure the AWS CLI with appropriate credentials.
+3. **Docker**: Install Docker on your local machine or development environment.
+4. **Python 3.7+**: The project is written in Python, ensure you have Python 3.7 or later installed.
+5. **IAM Permissions**: Ensure your AWS user or role has the necessary permissions to:
+- Access Amazon Bedrock
+- Push/pull images to/from Amazon ECR
+- (Optional) Deploy to other AWS services if you plan to host the application on AWS
+6. **Amazon Bedrock Model Access**: Request access to the Bedrock models you plan to use (e.g., Claude models) through the AWS console.
+
+## Git Clone : 
+```
+git clone https://github.com/rahulsing/bedrock-streamlit-ecs-task.git
+```
 
 
 ## Step 1: Set the Enviroment Variablea  
