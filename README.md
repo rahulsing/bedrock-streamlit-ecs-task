@@ -3,7 +3,7 @@
 ## Architecture Overview
 This project demonstrates a serverless architecture using AWS services to create an interactive AI chatbot. Here are a few key points about the architecture:
 
-![steamlitapp](https://github.com/rahulsing/bedrock-streamlit-ecs-task/blob/main/StreamlitApp.PNG?raw=true)
+![steamlitapp](https://github.com/rahulsing/bedrock-streamlit-ecs-task/blob/main/StreamlitOnECS.PNG?raw=true)
 
 1. **Streamlit Frontend**: A user-friendly web interface built with Streamlit, allowing users to input prompts and select AI models.
 2. **Amazon Bedrock**: The backend AI service provided by AWS, which hosts various large language models.
