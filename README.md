@@ -115,19 +115,6 @@ echo $ECSSecurityGroup
 
 Run the task  : 
 ```
-aws ecs run-task \
-  --cluster $CLUSTER_NAME \
-  --task-definition $TaskDefinitionArn \
-  --launch-type FARGATE \
-  --count 1 \
-  --platform-version LATEST \
-  --network-configuration "awsvpcConfiguration={subnets=[$PUBLIC_SUBNET_ID],securityGroups=[$ECSSecurityGroup],assignPublicIp=ENABLED}" \
-  --enable-ecs-managed-tags \
-  --region $AWS_REGION
-```
-
-## Get the API URL 
-```
 TASK_ARN=$(aws ecs run-task \
   --cluster $CLUSTER_NAME \
   --task-definition $TaskDefinitionArn \
@@ -139,6 +126,11 @@ TASK_ARN=$(aws ecs run-task \
   --region $AWS_REGION \
   --query 'tasks[0].taskArn' \
   --output text)
+```
+
+## Get the API URL 
+```
+echo $TASK_ARN
 ```
 
 ##### Wait for status to change to running: 
