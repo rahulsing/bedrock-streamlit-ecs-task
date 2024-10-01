@@ -147,24 +147,24 @@ aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN --query 'tasks[0
 
 ```
 
+##### Once the ECS Task is in running state, get the URL for the Streamlit app: 
+
 ```
 ENI_ID=$(aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN \
   --query 'tasks[0].attachments[0].details[?name==`networkInterfaceId`].value' \
   --region $AWS_REGION \
   --output text)
-```
 
-```
 PUBLIC_IP=$(aws ec2 describe-network-interfaces --network-interface-ids $ENI_ID \
   --query 'NetworkInterfaces[0].Association.PublicIp' \
   --region $AWS_REGION \
   --output text)
-```
 
-```
 EXTERNAL_LINK="http://$PUBLIC_IP:80"
 echo $EXTERNAL_LINK
 ```
+
+
 
 ## Open the Streamlit app: 
 ![steamlitapp](https://github.com/rahulsing/bedrock-streamlit-ecs-task/blob/main/StreamlitApp.PNG?raw=true)
