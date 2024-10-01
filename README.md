@@ -105,14 +105,13 @@ aws cloudformation create-stack \
 ##### From above CloudFromation output set the below value
 
 ```
-aws cloudformation describe-stacks --stack-name  my-ecs-streamlit-bedrock-stack --query 'Stacks[0].Outputs[].{Key:OutputKey,Value:OutputValue}' --output json --region $AWS_REGION
+TaskDefinitionArn=$(aws cloudformation describe-stacks --stack-name my-ecs-streamlit-bedrock-stack --query "Stacks[0].Outputs[?OutputKey=='TaskDefinitionArn'].OutputValue" --region $AWS_REGION --output text)
+ECSSecurityGroup=$(aws cloudformation describe-stacks --stack-name my-ecs-streamlit-bedrock-stack --query "Stacks[0].Outputs[?OutputKey=='ECSSecurityGroup'].OutputValue" --region $AWS_REGION --output text)
+
+echo $TaskDefinitionArn
+echo $ECSSecurityGroup
 ```
 
-Set variable 
-```
-TaskDefinitionArn=arn:aws:ecs:us-west-2:12345678910:task-definition/from-cloudformation:1
-ECSSecurityGroup=sg-01cd84ab7d48bc240
-```
 
 Run the task  : 
 ```
