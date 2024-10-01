@@ -42,7 +42,7 @@ git clone https://github.com/rahulsing/bedrock-streamlit-ecs-task.git
 ## Step 1: Set the Enviroment Variable
 ```
 ECR_REPOSITORY_NAME=mystreamlitapp
-AWS_ACCOUNT_ID="12345678910"
+AWS_ACCOUNT_ID="<12345678910>"
 AWS_REGION="us-west-2"
 IMAGE_TAG="latest"
 CLUSTER_NAME="MyECSCluster"
@@ -85,8 +85,8 @@ docker push "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSIT
 #### Get your Default VPC and a Public Subnet
 Set variable 
 ``` 
-VPC_ID=vpc-9cd2fee4
-PUBLIC_SUBNET_ID=subnet-b050e9c8
+VPC_ID=<vpc-9cd2fee4>
+PUBLIC_SUBNET_ID=<subnet-b050e9c8>
 ```
 
 #### Below is the CLI Command to create the CloudFormation Stack
