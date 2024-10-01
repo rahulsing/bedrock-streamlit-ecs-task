@@ -141,6 +141,7 @@ TASK_ARN=$(aws ecs run-task \
   --output text)
 ```
 
+##### Wait for status to change to running: 
 ```
 aws ecs describe-tasks --cluster MyECSCluster --tasks $TASK_ARN --query 'tasks[0].lastStatus' --region $AWS_REGION --output text 
 
