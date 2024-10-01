@@ -39,7 +39,7 @@ git clone https://github.com/rahulsing/bedrock-streamlit-ecs-task.git
 ```
 
 
-## Step 1: Set the Enviroment Variablea  
+## Step 1: Set the Enviroment Variable
 ```
 ECR_REPOSITORY_NAME=mystreamlitapp
 AWS_ACCOUNT_ID="12345678910"
